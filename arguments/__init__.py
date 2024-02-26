@@ -56,10 +56,10 @@ class ModelParams(ParamGroup):
         self.eval = False
         super().__init__(parser, "Loading Parameters", sentinel)
 
-    def extract(self, args):
-        g = super().extract(args)
-        g.source_path = os.path.abspath(g.source_path)
-        return g
+    def extract(self, args): #类的成员方法（第一个是self，代表类的实例对象，第二个是args，是一些参数。）
+        g = super().extract(args) #就是调用父类的extract方法，并传入参数args。这行代码将父类的extract方法返回的结果赋值给了变量g。
+        g.source_path = os.path.abspath(g.source_path) #返回数据集的绝对路径
+        return g #这段代码的功能是在调用父类的extract方法后，将返回的结果中的source_path属性转换为绝对路径，并返回修改后的结果。
 
 class PipelineParams(ParamGroup):
     def __init__(self, parser):

@@ -28,6 +28,7 @@ try:
 except ImportError:
     TENSORBOARD_FOUND = False
 
+#主函数
 def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoint_iterations, checkpoint, debug_from):
     first_iter = 0 #初始化迭代次数。
     tb_writer = prepare_output_and_logger(dataset)  #设置 TensorBoard 写入器和日志记录器。
@@ -228,7 +229,7 @@ if __name__ == "__main__":
     network_gui.init(args.ip, args.port) #这行代码初始化一个 GUI 服务器，使用 args.ip 和 args.port 作为参数。这可能是一个用于监视和控制训练过程的图形用户界面的一部分。
     torch.autograd.set_detect_anomaly(args.detect_anomaly) #这行代码设置 PyTorch 是否要检测梯度计算中的异常。
     training(lp.extract(args), op.extract(args), pp.extract(args), args.test_iterations, args.save_iterations, args.checkpoint_iterations, args.start_checkpoint, args.debug_from)
-    # 输入的参数包括：模型的参数（数据集的位置）、优化器的参数、其他pipeline的参数，测试迭代次数、保存迭代次数 、检查点迭代次数 、开始检查点 、调试起点
+    # 输入的参数包括：模型的参数（传入的为数据集的位置）、优化器的参数、其他pipeline的参数，测试迭代次数、保存迭代次数 、检查点迭代次数 、开始检查点 、调试起点
 
     # All done
     print("\nTraining complete.")
